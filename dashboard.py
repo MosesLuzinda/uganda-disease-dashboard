@@ -142,7 +142,6 @@ def make_line_by_year_disease(df: pd.DataFrame):
 
 
 def make_uganda_risk_map(df: pd.DataFrame, gdf_uga: gpd.GeoDataFrame):
-    # Aggregate incidents by district
     risk_df = (
         df.groupby("district")
         .size()
@@ -183,7 +182,7 @@ def make_uganda_risk_map(df: pd.DataFrame, gdf_uga: gpd.GeoDataFrame):
 
 
 # -----------------------------#
-# Layout: header               #
+# Layout: top & ABOUT section  #
 # -----------------------------#
 
 st.markdown(
@@ -191,10 +190,29 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.markdown(
-    "<p class='subtitle-text'>This dashboard summarizes historical outbreaks and "
-    "current risk patterns by disease, year, and district in Uganda. "
-    "Use it to prioritize surveillance, vaccination, and response resources.</p>",
+    "<p class='subtitle-text'>Analytics to monitor, anticipate, and respond to infectious "
+    "disease risks across districts in Uganda.</p>",
     unsafe_allow_html=True,
+)
+
+st.markdown("## Who we are")
+st.markdown(
+    "We provide an **epidemic intelligence** platform focused on Uganda, designed for "
+    "policy makers, epidemiologists, and district health teams who need timely and "
+    "accurate situational awareness."
+)
+
+st.markdown("## Our vision")
+st.markdown(
+    "To support evidence-based decisions that reduce preventable outbreaks and "
+    "strengthen the resilience of Uganda’s health system."
+)
+
+st.markdown("## Our values")
+st.markdown(
+    "- **Accuracy** – relying on trusted data and transparent methods.\n"
+    "- **Timeliness** – highlighting changes early so action can be taken.\n"
+    "- **Equity** – ensuring attention to high-risk and underserved districts."
 )
 
 with st.expander("How to read this dashboard"):
@@ -208,6 +226,7 @@ with st.expander("How to read this dashboard"):
     )
 
 st.markdown("---")
+st.markdown("## Analytics dashboard")
 
 # -----------------------------#
 # Data input & sidebar         #
@@ -374,3 +393,14 @@ with tab_map:
                 st.plotly_chart(fig_d, use_container_width=True)
             else:
                 st.info("No time-series data for this district.")
+
+# -----------------------------#
+# Contact / support section    #
+# -----------------------------#
+
+st.markdown("---")
+st.markdown("## Contact & support")
+st.markdown(
+    "For feedback, data issues, or improvement ideas, contact the dashboard team at "
+    "**your.email@example.com** or your Ministry of Health surveillance focal person."
+)
